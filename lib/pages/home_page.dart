@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_class_project/constants/theme.dart';
 import 'package:flutter_class_project/pages/sections/users_section.dart';
-import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
