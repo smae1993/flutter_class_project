@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_class_project/constants/theme.dart';
-import 'package:flutter_class_project/pages/sections/users_section.dart';
+import 'package:flutter_class_project/views/pages/sections/users_section.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -46,14 +46,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {},
+      //   child: const Icon(Icons.add),
+      // ),
       body: TabBarView(
         controller: tabController,
         children: [
-          Theme(data: userSectionTheme, child: UsersSection()),
+          UsersSection(),
           Icon(Icons.directions_transit),
           Icon(Icons.directions_bike),
         ],

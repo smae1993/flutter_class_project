@@ -7,6 +7,18 @@ ThemeData theme = ThemeData(
   //   primary: Colors.red,
   // ),
   // appBarTheme: AppBarTheme(backgroundColor: Colors.red),
+  inputDecorationTheme: InputDecorationTheme(
+    fillColor: const Color(0x7BFFFFFF),
+    filled: true,
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.grey.shade300),
+      borderRadius: BorderRadius.circular(12.0),
+    ),
+    border: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.grey.shade300),
+      borderRadius: BorderRadius.circular(12.0),
+    ),
+  ),
 );
 
 ButtonStyle errorButtonStyle =
