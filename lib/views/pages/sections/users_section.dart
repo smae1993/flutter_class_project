@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_class_project/models/user.dart';
@@ -19,22 +18,26 @@ class _UsersSectionState extends State<UsersSection> {
   final box = GetStorage();
   List<User> users = [];
 
-  Future<int> loadContent() async {
+  Future<void> loadContent() async {
     // final SharedPreferences prefs = await SharedPreferences.getInstance();
     // int a = prefs.getInt("counter") ?? 0;
-
-    return box.read("counter") ?? 0;
+    var data = json.decode(box.read("users"));
+    (data["users"] as List).forEach(
+      (element) {
+        users.add(
+          User(
+            element["name"],
+            element["nationalCode"],
+          ),
+        );
+      },
+    );
+    setState(() {});
   }
 
   @override
   void initState() {
-    loadContent().then(
-      (value) {
-        setState(() {
-          counter = value;
-        });
-      },
-    );
+    loadContent();
     super.initState();
   }
 
@@ -55,11 +58,16 @@ class _UsersSectionState extends State<UsersSection> {
                 )) {
                   setState(() {
                     users.add(user);
-                    var a = json.encode(users.map(
-                      (e) => e.toJson(),
-                    ));
-                    var b = json.decode(a);
-                    box.write("users", json.encode(users));
+
+                    Map<String, dynamic> usrs = {
+                      "users": users
+                          .map(
+                            (e) => e.toJson(),
+                          )
+                          .toList()
+                    };
+                    var a = json.encode(usrs);
+                    box.write("users", a);
                   });
                 } else {
                   Get.rawSnackbar(message: "کاربر با کد ملی قبلا وارد شده");

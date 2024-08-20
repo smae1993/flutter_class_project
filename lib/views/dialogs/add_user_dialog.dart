@@ -4,14 +4,12 @@ import 'package:flutter_class_project/models/user.dart';
 import 'package:get/get.dart';
 
 class AddUserDialog extends StatelessWidget {
-  AddUserDialog(this.callback) {
-    nameController = TextEditingController(text: "");
-    nationalCodeController = TextEditingController(text: "");
-  }
+  AddUserDialog(this.callback, {super.key});
 
-  Function(User) callback;
-  late TextEditingController nameController;
-  late TextEditingController nationalCodeController;
+  final Function(User) callback;
+  final TextEditingController nameController = TextEditingController(text: "");
+  final TextEditingController nationalCodeController =
+      TextEditingController(text: "");
   @override
   Widget build(BuildContext context) {
     return Dialog(

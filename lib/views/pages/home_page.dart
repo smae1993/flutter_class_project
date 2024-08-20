@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_class_project/constants/theme.dart';
 import 'package:flutter_class_project/views/pages/sections/users_section.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,6 +13,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    try {} catch (e) {
+    } finally {}
     tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
@@ -54,7 +55,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         controller: tabController,
         children: [
           UsersSection(),
-          Icon(Icons.directions_transit),
+          SizedBox(
+            width: 50,
+            height: 50,
+            child: Image.asset(
+              "assets/images/Logo.png",
+            ),
+          ),
           Icon(Icons.directions_bike),
         ],
       ),
